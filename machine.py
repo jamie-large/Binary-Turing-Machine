@@ -19,11 +19,11 @@ class Machine:
 			try:
 				self.current_rule.append(int(command[1:], 2))
 			except:
-				raise SyntaxError("Invalid command: " command)
+				raise SyntaxError(f"Invalid command: {command}")
 
 			# if the previous rule is now complete, add it to the rules
 			if len(self.current_rule) == 5:
-				self.rules[(current_rule[0], current_rule[1])] = (current_rule[2], current_rule[3], current_rule[4])
+				self.rules[(self.current_rule[0], self.current_rule[1])] = (self.current_rule[2], self.current_rule[3], self.current_rule[4])
 				self.current_rule = []
 			
 		# New input
@@ -32,7 +32,7 @@ class Machine:
 			try:
 				self.tape.append(int(command[1:], 2))
 			except:
-				raise SyntaxError("Invalid command: " command)
+				raise SyntaxError(f"Invalid command: {command}")
 
 	# Run the Turing Machine on the specified input
 	def run_machine(self):
@@ -56,7 +56,7 @@ class Machine:
 				state = INITIAL_STATE
 				index += 1
 
-			# PRINT STATE
+			# OUTPUT STATE
 			elif state == OUTPUT_STATE:
 				if c_symbol != BLANK:
 					try:
