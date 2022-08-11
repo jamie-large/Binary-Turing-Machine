@@ -6,7 +6,7 @@ from Machine import Machine
 def process_code(code):
 	m = Machine()
 	for line in code:
-		m.process_command(line)
+		m.process_command(line[:-1])
 
 	m.run_machine()
 

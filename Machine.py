@@ -13,11 +13,14 @@ class Machine:
 
 	# Process a binary command
 	def process_command(self, command):
+		if len(command) < 1 or command[-1] not in ("?", "!") or not all(c == "0" or c == "1" for c in command[:-2]):
+			raise SyntaxError("Invalid command: " + command);
+
 		# New part of rule
-		if command[0] == "0":
+		if command[-1] == "!":
 			# Add this to the current rule
 			try:
-				self.current_rule.append(int(command[1:], 2))
+				self.current_rule.append(int(command[:-1], 2))
 			except:
 				raise SyntaxError(f"Invalid command: {command}")
 
@@ -27,10 +30,10 @@ class Machine:
 				self.current_rule = []
 			
 		# New input
-		elif command[0] == "1":
+		elif command[-1] == "?":
 			# Add this to the tape
 			try:
-				self.tape.append(int(command[1:], 2))
+				self.tape.append(int(command[:-1], 2))
 			except:
 				raise SyntaxError(f"Invalid command: {command}")
 
@@ -68,7 +71,6 @@ class Machine:
 				else:
 					state = INITIAL_STATE
 					index += 1
-
 
 			# OTHER STATE
 			else:
