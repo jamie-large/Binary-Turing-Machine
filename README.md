@@ -1,5 +1,5 @@
 # Binary Turing Machine
-Files for the Binary Turing Machine esoteric programming language.
+Files for the Binary Turing Machine!? esoteric programming language.
 
 Includes the following:
 - BTM.py: a python interpreter for BTM programs
