@@ -39,17 +39,21 @@ class Machine:
 
 	# Run the Turing Machine on the specified input
 	def run_machine(self):
+		# for rule in self.rules:
+		# 	print(f"{rule} => {self.rules[rule]}")
+		# print(self.tape)
 		index = 0
 		state = INITIAL_STATE
 		if len(self.tape) == 0:
 			self.tape.append(BLANK)
 		c_symbol = self.tape[index]
 		while (state, c_symbol) in self.rules or state in (INPUT_STATE, OUTPUT_STATE):
+			# print(f"{(state, c_symbol)}, {index}, {self.tape}")
 			# INPUT STATE
 			if state == INPUT_STATE:
 				user_input = input()
 				try:
-					int_input = int(user_input)
+					int_input = ord(user_input)
 					self.tape[index] = int_input
 				except:
 					int_input = 0
