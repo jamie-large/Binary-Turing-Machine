@@ -5,3 +5,4 @@ Includes the following:
 - BTM.py: a python interpreter for BTM programs
 - Machine.py: a class that parses BTM commands and runs the Turing Machine on the input
 - Hello, world!: a "Hello, world!" program written in BTM
+- Binary cat: a BTM program that prints out all binary input it receives
